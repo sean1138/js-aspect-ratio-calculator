@@ -98,13 +98,26 @@ document.addEventListener("DOMContentLoaded", function () {
         updateContentSize();
 
         if (contentRatio > frameRatio) {
-            // Content is wider than frame (pillarboxing)
+            // Content is wider than frame (letterboxing)
             frame.style.width = "auto";
             frame.style.height = "456px";
-        } else {
-            // Content is taller than frame (letterboxing)
+            // debug
+            document.getElementById("content-ratio-words").textContent = "letterboxed";
+        } if (contentRatio < frameRatio) {
+            // Content is taller than frame (pillarboxing)
             frame.style.width = "800px";
             frame.style.height = "auto";
+            // debug
+            document.getElementById("content-ratio-words").textContent = "pillarboxed";
+        }
+        // if (contentRatio === frameRatio) {
+        //     frame.style.width = "456px";
+        //     frame.style.height = "456px";
+        // }
+        else {
+            frame.style.width = "auto";
+            frame.style.height = "auto";
+            document.getElementById("content-ratio-words").textContent = "both ratios match?";
         }
     }
 
@@ -126,11 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
         content.style.aspectRatio = `${contentWidth} / ${contentHeight}`;
 
         if (contentRatio > frameRatio) {
-            // Content is wider than frame (pillarboxing)
+            // Content is wider than frame (letterboxing)
             content.style.width = "100%";
             content.style.height = "auto";
         } else {
-            // Content is taller than frame (letterboxing)
+            // Content is taller than frame (pillarboxing)
             content.style.width = "auto";
             content.style.height = "100%";
         }
