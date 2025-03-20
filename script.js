@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (width % 16 !== 0 || height % 16 !== 0) {
-            aspectRatioOutput.textContent = "Both dimensions must be divisible by 16";
+        if (width % 8 !== 0 || height % 8 !== 0) {
+            aspectRatioOutput.textContent = "Both dimensions must be divisible by 8";
             return;
         }
 
@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (event.target === widthInput) {
                 height = Math.round((width / ratioW) * ratioH);
-                if (height % 16 !== 0) height += 16 - (height % 16);
+                if (height % 8 !== 0) height += 8 - (height % 8);
                 heightInput.value = height;
             } else if (event.target === heightInput) {
                 width = Math.round((height / ratioH) * ratioW);
-                if (width % 16 !== 0) width += 16 - (width % 16);
+                if (width % 8 !== 0) width += 8 - (width % 8);
                 widthInput.value = width;
             }
         }
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let ratioW = width / divisor;
         let ratioH = height / divisor;
 
-        aspectRatioOutput.textContent = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 16)`;
+        aspectRatioOutput.textContent = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
 
         updateContentSize();
         // updateFrameSize();
@@ -71,8 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let baseWidth = 800;
         let baseHeight = Math.round((baseWidth / ratioW) * ratioH);
 
-        if (baseWidth % 16 !== 0) baseWidth += 16 - (baseWidth % 16);
-        if (baseHeight % 16 !== 0) baseHeight += 16 - (baseHeight % 16);
+        if (baseWidth % 8 !== 0) baseWidth += 8 - (baseWidth % 8);
+        if (baseHeight % 8 !== 0) baseHeight += 8 - (baseHeight % 8);
 
         widthInput.value = baseWidth;
         heightInput.value = baseHeight;
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (contentRatio > frameRatio) {
             // Content is wider than frame (pillarboxing)
             frame.style.width = "auto";
-            frame.style.height = "464px";
+            frame.style.height = "450px";
         } else {
             // Content is taller than frame (letterboxing)
             frame.style.width = "800px";
