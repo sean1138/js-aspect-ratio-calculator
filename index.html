@@ -66,7 +66,7 @@
 	    width: 100%;
 	    height: auto;
 	    max-width: 800px;  /* Adjust as needed */
-	    max-height: 450px;
+	    max-height: 456px;
 	    background: black;
 	    color: white;
 		}
@@ -75,7 +75,7 @@
 	    object-fit: contain;
 	    aspect-ratio: var(--content-ratio); /* Set dynamically in JS */
 	    max-width: 800px;
-	    max-height: 450px;
+	    max-height: 456px;
 	    width: 100%;
 	    height: auto;
 	    background: blue;
@@ -151,15 +151,17 @@
 		</div>
 		<div class="column">
 			<p>Simulated visual representation:</p>
-			<div class="frame-wrap" style="width:800px;height:450px;border:1px solid #F0F;">
+			<div class="frame-wrap" style="width:800px;height:456px;border:1px solid #F0F;">
 				<div class="frame">
 					<div class="content">
 					</div>
 				</div>
 			</div>
-
+			<div class="debug">
+				<p>Frame Ratio: <span id="frame-ratio-output">-</span></p>
+				<p>Content Ratio: <span id="content-ratio-output">-</span></p>
+			</div>
 		</div>
-
 	</main>
 	<footer>
 		<p>VSXD 2025.03.18</p>

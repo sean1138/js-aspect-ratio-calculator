@@ -85,20 +85,27 @@ document.addEventListener("DOMContentLoaded", function () {
         let contentWidth = parseInt(widthInput.value, 10);
         let contentHeight = parseInt(heightInput.value, 10);
 
+        if (isNaN(frameWidth) || isNaN(frameHeight) || frameWidth <= 0 || frameHeight <= 0) return;
+
         let frameRatio = frameWidth / frameHeight;
         let contentRatio = contentWidth / contentHeight;
 
+        // debug
+        document.getElementById("frame-ratio-output").textContent = frameRatio;
+        document.getElementById("content-ratio-output").textContent = contentRatio;
+
         frame.style.aspectRatio = `${frameWidth} / ${frameHeight}`;
+        updateContentSize();
+
         if (contentRatio > frameRatio) {
             // Content is wider than frame (pillarboxing)
             frame.style.width = "auto";
-            frame.style.height = "450px";
+            frame.style.height = "456px";
         } else {
             // Content is taller than frame (letterboxing)
             frame.style.width = "800px";
             frame.style.height = "auto";
         }
-        updateContentSize();
     }
 
     function updateContentSize() {
@@ -107,8 +114,14 @@ document.addEventListener("DOMContentLoaded", function () {
         let contentWidth = parseInt(widthInput.value, 10);
         let contentHeight = parseInt(heightInput.value, 10);
 
+        if (isNaN(contentWidth) || isNaN(contentHeight) || contentWidth <= 0 || contentHeight <= 0) return;
+
         let frameRatio = frameWidth / frameHeight;
         let contentRatio = contentWidth / contentHeight;
+
+        // debug
+        document.getElementById("frame-ratio-output").textContent = frameRatio;
+        document.getElementById("content-ratio-output").textContent = contentRatio;
 
         content.style.aspectRatio = `${contentWidth} / ${contentHeight}`;
 
