@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
             frame.style.height = "456px";
             // debug
             document.getElementById("content-ratio-words").textContent = "letterboxed";
-        } if (contentRatio < frameRatio) {
+        } else if (contentRatio < frameRatio) {
             // Content is taller than frame (pillarboxing)
             frame.style.width = "800px";
             frame.style.height = "auto";
