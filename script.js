@@ -63,8 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         aspectRatioOutput.textContent = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
 
+        if (`${ratioW}:${ratioH}` === selectedRatio) {
+            aspectRatioOutput.classList.add("exact-match");
+        } else {
+            aspectRatioOutput.classList.remove("exact-match");
+        }
+
         updateContentSize();
-        // updateFrameSize();
     }
 
     function setAspectRatio() {
@@ -90,8 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateFrameSize() {
-        let frameWidth = parseInt(frameWidthInput.value, 10);
-        let frameHeight = parseInt(frameHeightInput.value, 10);
+        // let frameWidth = parseInt(frameWidthInput.value, 10);
+        // let frameHeight = parseInt(frameHeightInput.value, 10);
+        // parseInt() ignores decimal values (e.g., 16.5 would be read as 16).
+        // parseFloat() allows the frame width and height to retain decimal precision.
+        let frameWidth = parseFloat(frameWidthInput.value);
+        let frameHeight = parseFloat(frameHeightInput.value);
         let contentWidth = parseInt(widthInput.value, 10);
         let contentHeight = parseInt(heightInput.value, 10);
 
@@ -101,8 +110,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let contentRatio = contentWidth / contentHeight;
 
         // debug
+        const results = document.querySelector(".results");
         document.getElementById("frame-ratio-output").textContent = frameRatio;
         document.getElementById("content-ratio-output").textContent = contentRatio;
+
+        if (frameRatio === contentRatio) {
+            results.classList.add("exact-match");
+        } else {
+            results.classList.remove("exact-match");
+        }
 
         frame.style.aspectRatio = `${frameWidth} / ${frameHeight}`;
         updateContentSize();
@@ -127,8 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateContentSize() {
-        let frameWidth = parseInt(frameWidthInput.value, 10);
-        let frameHeight = parseInt(frameHeightInput.value, 10);
+        // let frameWidth = parseInt(frameWidthInput.value, 10);
+        // let frameHeight = parseInt(frameHeightInput.value, 10);
+        let frameWidth = parseFloat(frameWidthInput.value);
+        let frameHeight = parseFloat(frameHeightInput.value);
         let contentWidth = parseInt(widthInput.value, 10);
         let contentHeight = parseInt(heightInput.value, 10);
 
