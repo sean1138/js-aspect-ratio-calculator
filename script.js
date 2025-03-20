@@ -76,7 +76,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         widthInput.value = baseWidth;
         heightInput.value = baseHeight;
-        updateAspectRatio();
+
+        // updateAspectRatio(); // Ensures the width and height are in sync with aspect ratio
+        // Manually trigger the input events to ensure other updates happen
+        widthInput.dispatchEvent(new Event("input"));
+        heightInput.dispatchEvent(new Event("input"));
+        updateContentSize(); // Ensures .content reflects changes
+        updateFrameSize();   // Ensures .frame reflects changes
     }
 
     function updateFrameSize() {
@@ -109,15 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
             frame.style.height = "auto";
             // debug
             document.getElementById("content-ratio-words").textContent = "pillarboxed";
-        }
-        // if (contentRatio === frameRatio) {
-        //     frame.style.width = "456px";
-        //     frame.style.height = "456px";
-        // }
-        else {
+        } else {
             frame.style.width = "auto";
             frame.style.height = "auto";
-            document.getElementById("content-ratio-words").textContent = "both ratios match?";
+            document.getElementById("content-ratio-words").textContent = "both ratios match";
         }
     }
 
