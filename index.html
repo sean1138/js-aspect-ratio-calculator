@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Aspect Ratio Calculator</title>
+	<link href="reset.css" rel="stylesheet" type="text/css" />
+	<link href="pico.css" rel="stylesheet" type="text/css" />
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			padding: 1rem;
+			font-family: Arial, sans-serif;
+		}
+
+		label,
+		input {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		#aspect-ratio {
+			font-weight: bold;
+			color: blue;
+		}
+
+		header,
+		main,
+		footer {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.row,
+		.input {
+			display: flex;
+			flex-direction: row;
+			gap: 2rem;
+		}
+
+		.row input {
+			align-items: baseline;
+			width: 16ch;
+		}
+
+		.row .input {
+			gap: 1em;
+		}
+		.frame {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    width: 100%;
+	    height: auto;
+	    max-width: 800px;  /* Adjust as needed */
+	    max-height: 400px;
+	    background: black;
+	    aspect-ratio: 16 / 9; /* Default aspect ratio */
+	    position: relative;
+		}
+
+		.content {
+			--content-ratio: 16 / 9;
+	    background: red;
+	    aspect-ratio: var(--content-ratio, 16 / 9); /* Set dynamically in JS */
+	    max-width: 800px;
+	    max-height: 400px;
+	    width: 100%;
+	    height: auto;
+	    object-fit: contain;
+		}
+
+		footer {
+			flex-direction: row;
+			justify-content: center;
+			margin-top: auto;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>Aspect Ratio Calculator</h1>
+	</header>
+	<main>
+		<label for="aspect-ratio-select">Select Aspect Ratio:</label>
+		<select id="aspect-ratio-select">
+			<option value="">Custom</option>
+			<option value="1:2.32">1:2.32 - 1st TV, Baird, 1930s</option>
+			<option value="1.37:1">1.37:1 - 16 mm and 35 mm standard</option>
+			<option value="1.375:1">1.375:1 - 35 mm "Academy Ratio" 1932 - 1953</option>
+			<option value="1.43:1">1.43:1 - IMAX 70 mm standard</option>
+			<option value="1.5:1">1.5:1 - 35 mm photo film frame, full frame digital camera sensor</option>
+			<option value="4:3">4:3 - 35 mm silent films & NTSC SD video</option>
+			<option value="5:4">5:4 - common large CRT computer monitors</option>
+			<option value="4:3">4:3 (Standard)</option>
+			<option value="4:3">4:3 (Standard)</option>
+			<option value="16:9">16:9 (Widescreen)</option>
+			<option value="21:9">21:9 (Ultrawide)</option>
+			<option value="1.85:1">1.85:1 (Cinema)</option>
+			<option value="2.39:1">2.39:1 (Anamorphic)</option>
+			<option value="A4 (1.414:1)">A4 (Print)</option>
+		</select>
+		<div class="row">
+			<div class="input"> <label for="width">Width (px):</label> <input type="number" id="width" min="16" step="16"> </div>
+			<div class="input"> <label for="height">Height (px):</label> <input type="number" id="height" min="16" step="16"> </div>
+		</div>
+		<p>Aspect Ratio: <span id="aspect-ratio">Enter values to calculate</span></p>
+		<div class="row">
+			<div class="input"> <label for="frame-width">Width:</label> <input type="number" id="frame-width" value="16"> </div>
+			<div class="input"> <label for="frame-height">Height:</label> <input type="number" id="frame-height" value="9"> </div>
+		</div>
+		<div class="row">
+			<div class="frame">
+				<div class="content"></div>
+			</div>
+		</div>
+
+	</main>
+	<footer>
+		<p>VSXD 2025.03.18</p>
+	</footer> <script src="script.js"></script>
+</body>
+
+</html>
