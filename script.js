@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const aspectRatios = {
         "1:2.32": [1, 2.32],
+        "1.37:1": [1.37, 1],
+        "1.375:1": [1.375, 1],
+        "1.43:1": [1.43, 1],
+        "1.5:1": [1.5, 1],
         "4:3": [4, 3],
         "5:4": [5, 4],
         "11:8": [11, 8],
@@ -111,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("content-ratio-words").textContent = "letterboxed";
         } else if (contentRatio < frameRatio) {
             // Content is taller than frame (pillarboxing)
-            frame.style.width = "800px";
+            frame.style.width = "auto";
             frame.style.height = "auto";
             // debug
             document.getElementById("content-ratio-words").textContent = "pillarboxed";
@@ -148,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
             content.style.width = "auto";
             content.style.height = "100%";
         }
-        // updateFrameSize();
     }
 
     widthInput.addEventListener("input", updateAspectRatio);

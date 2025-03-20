@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Aspect Ratio Calculator</title>
-	<link href="reset.css" rel="stylesheet" type="text/css" />
+	<!-- <link href="reset.css" rel="stylesheet" type="text/css" /> -->
 	<link href="pico.css" rel="stylesheet" type="text/css" />
 	<style>
 		html,body {
@@ -39,18 +39,25 @@
 		}
 
 		.row,
-		.input {
+		[class^="input"] {
 			display: flex;
 			flex-direction: row;
+			align-items: center;
 			gap: 2rem;
 		}
 
 		.row input {
-			align-items: baseline;
-			width: 16ch;
+			width: auto;
+			min-width: 4ch;
+		}
+		.input-content input{
+			width: 12ch;
+		}
+		.input-frame input{
+			width: 8ch;
 		}
 
-		.row .input {
+		.row [class^="input"] {
 			gap: 1em;
 		}
 		.column{
@@ -111,15 +118,15 @@
 		<h1>Aspect Ratio Calculator</h1>
 	</header>
 	<main>
-		<label for="aspect-ratio-select">Select Aspect Ratio:</label>
+		<label for="aspect-ratio-select">Select Content Aspect Ratio Preset:</label>
 		<select id="aspect-ratio-select">
-			<option value="">Custom</option>
+			<option value="">Custom - content height & width ratio unlocked</option>
 			<option value="1:2.32">1:2.32 - 1st TV, Baird, 1930s</option>
 			<option value="1.37:1">1.37:1 - 16 mm and 35 mm standard</option>
 			<option value="1.375:1">1.375:1 - 35 mm "Academy Ratio" 1932 - 1953</option>
 			<option value="1.43:1">1.43:1 - IMAX 70 mm standard</option>
 			<option value="1.5:1">1.5:1 - 35 mm photo film frame, full frame digital camera sensor</option>
-			<option value="4:3">4:3 - 35 mm silent films & NTSC SD video</option>
+			<option value="4:3">4:3 - 35 mm silent film era & NTSC SD video</option>
 			<option value="5:4">5:4 - common large CRT computer monitors</option>
 			<option value="4:3">4:3 (Standard)</option>
 			<option value="4:3">4:3 (Standard)</option>
@@ -130,39 +137,41 @@
 			<option value="A4 (1.414:1)">A4 (Print)</option>
 		</select>
 		<div class="row">
-			<div class="input">
+			<div class="input-content">
 				<label for="width">Content Width (px):</label>
 				<input type="number" id="width" min="8" step="8">
 			</div>
-			<div class="input">
+			<div class="input-content">
 				<label for="height">Content Height (px):</label>
 				<input type="number" id="height" min="8" step="8">
 			</div>
-		</div>
-		<p>Aspect Ratio: <span id="aspect-ratio">Enter values to calculate</span></p>
-		<div class="row">
-			<div class="input">
+			<div class="input-frame">
 				<label for="frame-width">Frame Width:</label>
 				<input type="number" id="frame-width" min="1" value="16">
 			</div>
-			<div class="input">
+			<div class="input-frame">
 				<label for="frame-height">Frame Height:</label>
 				<input type="number" id="frame-height" min="1" value="9">
 			</div>
 		</div>
+		<p>Content Aspect Ratio: <span id="aspect-ratio">Enter values to calculate</span></p>
 		<div class="column">
 			<p>Simulated visual representation:</p>
-			<div class="frame-wrap" style="width:800px;height:456px;border:1px solid #F0F;">
-				<div class="frame">
-					<div class="content">
+			<div class="row" style="align-items: unset;">
+				<div class="frame-wrap" style="width:800px;height:456px;border:1px solid #F0F;">
+					<div class="frame">
+						<div class="content">
+						</div>
 					</div>
 				</div>
+				<div class="debug">
+					<p>Frame Ratio: <span id="frame-ratio-output">-</span> <br>
+					Content Ratio: <span id="content-ratio-output">-</span> <br>
+					Effect: <span id="content-ratio-words">-</span></p>
+				</div>
 			</div>
-			<div class="debug">
-				<p>Frame Ratio: <span id="frame-ratio-output">-</span></p>
-				<p>Content Ratio: <span id="content-ratio-output">-</span></p>
-				<p>Effect: <span id="content-ratio-words">-</span></p>
-			</div>
+
+
 		</div>
 	</main>
 	<footer>
