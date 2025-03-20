@@ -110,10 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let contentRatio = contentWidth / contentHeight;
 
         // debug
-        const results = document.querySelector(".results");
         document.getElementById("frame-ratio-output").textContent = frameRatio;
         document.getElementById("content-ratio-output").textContent = contentRatio;
 
+        const results = document.querySelector(".results");
         if (frameRatio === contentRatio) {
             results.classList.add("exact-match");
         } else {
@@ -158,6 +158,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // debug
         document.getElementById("frame-ratio-output").textContent = frameRatio;
         document.getElementById("content-ratio-output").textContent = contentRatio;
+
+        const results = document.querySelector(".results");
+        if (frameRatio === contentRatio) {
+            results.classList.add("exact-match");
+        } else {
+            results.classList.remove("exact-match");
+        }
 
         content.style.aspectRatio = `${contentWidth} / ${contentHeight}`;
 
