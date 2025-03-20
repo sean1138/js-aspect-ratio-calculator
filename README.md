@@ -2,6 +2,10 @@
 
 A JavaScript-based aspect ratio calculator that helps users determine and adjust resolutions while ensuring dimensions are evenly divisible by 8. The tool also includes a framing feature that compares content against different frame sizes. This simulated visual output can also possibly help people who don't intuitively understand aspect ratios, cropping (not shown but i hope the frame vs content boxes visual would be enough as it is), letterboxing, and pillarboxing concepts.
 
+## demonstration video
+[![video thumbnail](jsarc-video-thumb.png)](https://youtu.be/2_xbtJFZ1QY
+ "js aspect ratio calculator demonstration")
+
 ## Features
 - **Aspect Ratio Selection**: Choose from a predefined list of common aspect ratios (e.g., 4:3, 16:9, 21:9) or custom/unlocked via the drop-down menu.
 - **Dynamic Resolution Adjustment**: Updates width and height values while maintaining the selected aspect ratio.
