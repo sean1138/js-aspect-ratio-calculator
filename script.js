@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         aspectRatioOutput.textContent = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 16)`;
 
         updateContentSize();
+        // updateFrameSize();
     }
 
     function setAspectRatio() {
@@ -88,16 +89,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let contentRatio = contentWidth / contentHeight;
 
         frame.style.aspectRatio = `${frameWidth} / ${frameHeight}`;
-        updateContentSize();
         if (contentRatio > frameRatio) {
             // Content is wider than frame (pillarboxing)
             frame.style.width = "auto";
-            frame.style.height = "400px";
+            frame.style.height = "464px";
         } else {
             // Content is taller than frame (letterboxing)
             frame.style.width = "800px";
             frame.style.height = "auto";
         }
+        updateContentSize();
     }
 
     function updateContentSize() {
@@ -120,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             content.style.width = "auto";
             content.style.height = "100%";
         }
+        // updateFrameSize();
     }
 
     widthInput.addEventListener("input", updateAspectRatio);

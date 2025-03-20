@@ -8,7 +8,11 @@
 	<link href="reset.css" rel="stylesheet" type="text/css" />
 	<link href="pico.css" rel="stylesheet" type="text/css" />
 	<style>
+		html,body {
+		    height:100%;
+		}
 		body {
+			--content-ratio: 16 / 9;
 			display: flex;
 			flex-direction: column;
 			min-height: 100vh;
@@ -24,7 +28,7 @@
 
 		#aspect-ratio {
 			font-weight: bold;
-			color: blue;
+			color: orangered;
 		}
 
 		header,
@@ -58,25 +62,25 @@
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
-	    aspect-ratio: 16 / 9; /* Default aspect ratio */
+	    aspect-ratio: var(--content-ratio); /* Default aspect ratio */
 	    width: 100%;
 	    height: auto;
 	    max-width: 800px;  /* Adjust as needed */
-	    max-height: 400px;
+	    max-height: 464px;
 	    background: black;
 	    color: white;
 		}
 		.content {
-			--content-ratio: 16 / 9;
 			position: relative;
 	    object-fit: contain;
-	    aspect-ratio: var(--content-ratio, 16 / 9); /* Set dynamically in JS */
+	    aspect-ratio: var(--content-ratio); /* Set dynamically in JS */
 	    max-width: 800px;
-	    max-height: 400px;
+	    max-height: 464px;
 	    width: 100%;
 	    height: auto;
 	    background: blue;
 	    color: yellow;
+	    z-index: 1;
 		}
 		.frame:after{
 			content: "FRAME";
@@ -125,20 +129,35 @@
 			<option value="A4 (1.414:1)">A4 (Print)</option>
 		</select>
 		<div class="row">
-			<div class="input"> <label for="width">Content Width (px):</label> <input type="number" id="width" min="16" step="16"> </div>
-			<div class="input"> <label for="height">Content Height (px):</label> <input type="number" id="height" min="16" step="16"> </div>
+			<div class="input">
+				<label for="width">Content Width (px):</label>
+				<input type="number" id="width" min="16" step="16">
+			</div>
+			<div class="input">
+				<label for="height">Content Height (px):</label>
+				<input type="number" id="height" min="16" step="16">
+			</div>
 		</div>
 		<p>Aspect Ratio: <span id="aspect-ratio">Enter values to calculate</span></p>
 		<div class="row">
-			<div class="input"> <label for="frame-width">Frame Width:</label> <input type="number" id="frame-width" value="16"> </div>
-			<div class="input"> <label for="frame-height">Frame Height:</label> <input type="number" id="frame-height" value="9"> </div>
+			<div class="input">
+				<label for="frame-width">Frame Width:</label>
+				<input type="number" id="frame-width" min="1" value="16">
+			</div>
+			<div class="input">
+				<label for="frame-height">Frame Height:</label>
+				<input type="number" id="frame-height" min="1" value="9">
+			</div>
 		</div>
 		<div class="column">
 			<p>Simulated visual representation:</p>
-			<div class="frame">
-				<div class="content">
+			<div class="frame-wrap" style="width:800px;height:464px;border:1px solid #F0F;">
+				<div class="frame">
+					<div class="content">
+					</div>
 				</div>
 			</div>
+
 		</div>
 
 	</main>
