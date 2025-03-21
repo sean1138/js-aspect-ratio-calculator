@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let ratioW = width / divisor;
         let ratioH = height / divisor;
 
-        if(selectedRatio = "unlocked"){
+        if (selectedRatio === "unlocked"){
             aspectRatioOutput.classList.add("exact-match");
             aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
         } else if (`${ratioW}:${ratioH}` === selectedRatio) {
