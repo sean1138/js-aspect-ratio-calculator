@@ -83,13 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedRatio === "unlocked") {
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (dimensions are divisible by 81)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (dimensions are divisible by 8)`;
         } else if (selectedRatio == `${ratioW}:${ratioH}`) {
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (dimensions are divisible by 82)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (dimensions are divisible by 8)`;
         } else {
             aspectRatioOutput.classList.remove("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 84)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
         }
         updateContentSize();
     }
