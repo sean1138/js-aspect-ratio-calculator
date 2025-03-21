@@ -77,17 +77,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedRatio === "unlocked"){
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
         } else if (`${ratioW}:${ratioH}` === selectedRatio) {
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
         } else {
             aspectRatioOutput.classList.remove("exact-match");
 
             if (!aspectRatioSelect.value) {
-                aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (adjusted to ensure dimensions are divisible by 8)`;
+                aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (adjusted to ensure dimensions are divisible by 8)`;
             } else {
-                aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
+                aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
             }
         }
 
