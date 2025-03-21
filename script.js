@@ -213,6 +213,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // show/hide things
+// How This Works:
+// 1. Loops through all <option> elements in aspect-ratio-select
+// 2. Hides all options first (style.display = "none")
+// 3. Shows only the ones that match the selected category from arSwitch
+// 4. If "all" is selected, it shows all options
+// 5. Automatically selects the first visible option
 document.addEventListener("DOMContentLoaded", function () {
   const arSwitch = document.getElementById("arSwitch");
   const arSelect = document.getElementById("aspect-ratio-select");
