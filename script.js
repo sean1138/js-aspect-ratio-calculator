@@ -10,30 +10,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const aspectRatios = {
         "1:2.32": [1, 2.32],
-        "5:4": [5, 4],
-        "4:3": [4, 3],
-        "1.37:1": [1.37, 1],
-        "1.375:1": [1.375, 1],
+        "5:4": [5, 4], // 1.25
+        "4:3": [4, 3], // 1.333
+        "48:35": [1.37, 1], // 1.37
+        "11:8": [11, 8], // 1.375:1
         "A4 (1.414:1)": [1.414, 1],
-        "1.43:1": [1.43, 1],
-        "1.5:1": [1.5, 1],
-        "1.6:1": [1.6, 1],
-        "1.66:1": [1.66, 1],
-        "1.7:1": [1.7, 1],
-        "1.75:1": [1.75, 1],
-        "1.85:1": [1.85, 1],
-        "1.875:1": [1.875, 1],
+        "143:100": [143, 100], // 1.43:1
+        "3:2": [3, 2], // 1.5
+        // "16:10": [16, 10], // 1.6
+        "8:5": [8, 5], // 1.6
+        "5:3": [5, 3], // 1.66
+        "16:9": [16, 9], // 1.7
+        "7:4": [7, 4], // 1.75:1
+        "37:20": [37, 20], //1.85
+        "15:8": [15, 8], // 1.875
         "2:1": [2, 1],
-        "2.208:1": [2.208, 1],
-        "2.35:1": [2.35, 1],
-        "2.39:1": [2.39, 1],
-        "2.4:1": [2.4, 1],
-        "2.55:1": [2.55, 1],
-        "2.592:1": [2.592, 1],
-        "2.6:1": [2.6, 1],
-        "2.76:1": [2.76, 1],
-        "3.5:1": [3.5, 1],
-        "3.6:1": [3.6, 1],
+        "11:5": [11, 5], // 2.208:1
+        "47:20": [47, 20], // 2.35:1
+        "43:8": [43, 8], // 2.39:1
+        "7:3": [7, 3], // 2.4:1, 21:9
+        "51:20": [51, 20], // 2.55:1
+        // 324:125
+        "70:27": [70, 27], // 2.592
+        "8:3": [8, 3], // 2.6:1
+        "69:25": [69, 25], // 2.76:1
+        "32:9": [32, 9], // 3.5
+        "18:5": [18, 5], // 3.6:1
         "12:1": [12, 1]
         // "21:9": [21, 9]
     };
@@ -75,23 +77,19 @@ document.addEventListener("DOMContentLoaded", function () {
         let ratioW = width / divisor;
         let ratioH = height / divisor;
 
+        const selectedNumRatio = parseFloat(selectedRatio.split(":")[0]) / parseFloat(selectedRatio.split(":")[1]);
+        const actualNumRatio = ratioW / ratioH;
+
         if (selectedRatio === "unlocked"){
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
-        } else if (`${ratioW}:${ratioH}` === selectedRatio) {
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 81)`;
+        } else if (selectedRatio == `${ratioW}:${ratioH}`) {
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 82)`;
         } else {
             aspectRatioOutput.classList.remove("exact-match");
-
-            if (!aspectRatioSelect.value) {
-                aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (adjusted to ensure dimensions are divisible by 8)`;
-            } else {
-                aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
-            }
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 84)`;
         }
-
-
         updateContentSize();
     }
 
@@ -210,4 +208,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateFrameSize();
     updateContentSize();
+
+
+});
+
+// show/hide things
+document.addEventListener("DOMContentLoaded", function () {
+  const arSwitch = document.getElementById("arSwitch");
+  const arSelect = document.getElementById("aspect-ratio-select");
+
+  if (!arSwitch || !arSelect) {
+    console.error("One or more elements are missing.");
+    return;
+  }
+
+  arSwitch.addEventListener("change", function () {
+    const value = arSwitch.value;
+    const options = arSelect.querySelectorAll("option");
+
+    options.forEach(option => {
+      // Reset all options to hidden first
+      option.style.display = "none";
+
+      // Show only options that match the selected category
+      if (value === "all" || option.classList.contains(value)) {
+        option.style.display = "block";
+      }
+    });
+
+    // Set the first visible option as the selected one
+    const firstVisible = arSelect.querySelector("option[style='display: block;']");
+    if (firstVisible) {
+      arSelect.value = firstVisible.value;
+    }
+  });
 });

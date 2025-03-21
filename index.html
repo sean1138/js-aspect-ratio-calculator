@@ -67,6 +67,9 @@
 			display: flex;
 			flex-direction: column;
 		}
+		input#ar-switch:checked ~ label#id1{
+		  display:none;
+		}
 		.frame {
 	    position: relative;
 	    display: flex;
@@ -101,15 +104,6 @@
 			top: 0;
 			left: 0;
 		}
-		/*.content:after{
-			content: "CONTENT";
-			position: absolute;
-			bottom: 0;
-			left: 0;
-		}*/
-
-
-
 		footer {
 			flex-direction: row;
 			justify-content: center;
@@ -123,36 +117,49 @@
 		<h1>Aspect Ratio Calculator</h1>
 	</header>
 	<main>
-		<label for="aspect-ratio-select">Select Content Aspect Ratio Preset:</label>
-		<select id="aspect-ratio-select">
-			<option value="unlocked">Custom - content height & width ratio unlocked</option>
-			<option value="1:2.32">1:2.32 - 1st TV, Baird, 1930s</option>
-			<option value="5:4">1:1.25 (5:4) - common large CRT computer monitors</option>
-			<option value="4:3">1:1.333 (4:3) - 35 mm silent film era & NTSC SD video</option>
-			<option value="1.37:1">1.37:1 - 16 mm and 35 mm standard</option>
-			<option value="1.375:1">1.375:1 - 35 mm "Academy Ratio" 1932 - 1953</option>
-			<option value="A4 (1.414:1)">A4 1:1.414 (Print)</option>
-			<option value="1.43:1">1.43:1 - IMAX 70 mm standard</option>
-			<option value="1.5:1">1.5:1 (3:2) - 35 mm photo film frame, full frame digital camera sensor</option>
-			<option value="1.6:1">1.6:1 (16:10, 8:5) - Based Computer Monitors</option>
-			<option value="1.66:1">1.6:1 (5:3, 15:9) - Early 35 mm widescreen, 16 mm, Nintendo 3DS top screen</option>
-			<option value="1.7:1">1.7:1 (16:9) - Consumer Widescreen, HDTV</option>
-			<option value="1.75:1">1.75:1 (7:4) - 35 mm Widescreen 1953 - 1955</option>
-			<option value="1.85:1">1.85:1 (37:20) - 35 mm 1953, 3-perf, Ultra 16 mm</option>
-			<option value="1.875:1">1.875:1 (15:8) - HDTV SG 1990s 1920x1024</option>
-			<option value="2:1">2:1 (18:9) - SuperScope, Red Digital, Mobile Phones</option>
-			<option value="2.208:1">2.208:1 (~ 11:5) - Todd-AO 70 mm 1950s</option>
-			<option value="2.35:1">2.35:1 - (~ 47:20) - 35 mm Anamorphic prior to 1970, CinemaScope, early Panavision</option>
-			<option value="2.39:1">2.39:1 (~ 43:8, 21.5:9) - 35 mm Anamorphic 1970+</option>
-			<option value="2.4:1">2.4:1 (~ 21:9, 12:5) - UltraWide Monitors, Blu-ray, 192x800</option>
-			<option value="2.55:1">2.55:1 (51:20) - CinemaScope prior to 1954, CinemaScope 55</option>
-			<option value="2.592:1">2.592:1 (70:27) - Cinerama full height</option>
-			<option value="2.6:1">2.6:1 (8:3, 24:9) - Super 16 mm</option>
-			<option value="2.76:1">2.76:1 (29:25) - Ultra Panavision 70/MGM Camera 65</option>
-			<option value="3.5:1">3.5:1 (32:9) - Super UltraWide</option>
-			<option value="3.6:1">3.6:1 (18:5) - IMAX Ulra-WideScreen 3.6</option>
-			<option value="12:1">12:1 - Disney Circle-Vision 360&deg; 1955</option>
-		</select>
+		<div class="row">
+			<div class="column">
+				<label for="showAll">Show Types:</label>
+				<select id="arSwitch">
+					<option value="all" id="sAll">All</option>
+					<option value="digital" id="sDig">Digital</option>
+					<option value="analog" id="sAna">Analog</option>
+					<option value="social" id="sSM">Social Media</option>
+				</select>
+			</div>
+			<div class="column">
+				<label for="aspect-ratio-select">Select Content Aspect Ratio Preset:</label>
+				<select id="aspect-ratio-select">
+					<option value="unlocked" class="digital analog social">Custom - content height & width ratio unlocked</option>
+					<option value="1:2.32">1:2.32 - 1st TV, Baird, 1930s</option>
+					<option value="5:4" class="digital" style="display:none">5:4 (1:1.25) - common large CRT computer monitors</option>
+					<option value="4:3" class="digital analog">4:3 (1:1.333) - 35 mm silent film era & NTSC SD video</option>
+					<option value="48:35"  class="analog">48:35 (1.37:1) - 16 mm and 35 mm standard</option>
+					<option value="11:8" class="analog">11:8 (1.375:1) - 35 mm "Academy Ratio" 1932 - 1953</option>
+					<option value="A4 (1.414:1)" class="analog">A4 1:1.414 (Print)</option>
+					<option value="143:100" class="analog">143:100 (1.43:1) - IMAX 70 mm standard</option>
+					<option value="3:2" class="digital analog">3:2 (1.5:1) - 35 mm photo film frame, full frame digital camera sensor</option>
+					<option value="8:5" class="digital">8:5 (1.6:1, 16:10) - Based Computer Monitors</option>
+					<option value="5:3" class="analog">5:3 (1.66:1, 15:9) - Early 35 mm widescreen, 16 mm, Nintendo 3DS top screen</option>
+					<option value="16:9" class="digital">16:9 (1.7:1) - Consumer Widescreen, HDTV</option>
+					<option value="7:4" class="analog">7:4 (1.75:1) - 35 mm Widescreen 1953 - 1955</option>
+					<option value="37:20" class="analog">37:20 (1.85:1) - 35 mm 1953, 3-perf, Ultra 16 mm</option>
+					<option value="15:8" class="digital">15:8 (1.875:1) - HDTV SG 1990s 1920x1024</option>
+					<option value="2:1" class="digital analog">2:1 (18:9) - SuperScope, Red Digital, Mobile Phones</option>
+					<option value="11:5" class="analog">11:5 (2.208:1) - Todd-AO 70 mm 1950s</option>
+					<option value="47:20" class="analog">47:20 - (2.35:1) - 35 mm Anamorphic prior to 1970, CinemaScope, early Panavision</option>
+					<option value="43:8" class="analog">43:8 (2.39:1, 21.5:9) - 35 mm Anamorphic 1970+</option>
+					<option value="7:3" class="digital">21:9 (2.4:1, 7:3, 12:5) - UltraWide Monitors, Blu-ray, 192x800</option>
+					<option value="51:20" class="analog">51:20 (2.55:1) - CinemaScope prior to 1954, CinemaScope 55</option>
+					<option value="70:27" class="analog">70:27 (2.592:1) - Cinerama full height</option>
+					<option value="8:3" class="analog">8:3 (2.6:1, 24:9) - Super 16 mm</option>
+					<option value="69:25" class="analog">69:25 (2.76:1) - Ultra Panavision 70/MGM Camera 65</option>
+					<option value="32:9" class="digital">32:9 (3.5:1) - Super UltraWide</option>
+					<option value="18:5" class="analog">18:5 (3.6:1) - IMAX Ulra-WideScreen 3.6</option>
+					<option value="12:1" class="analog">12:1 - Disney Circle-Vision 360&deg; 1955</option>
+				</select>
+			</div>
+		</div>
 		<div class="row">
 			<div class="input-content">
 				<label for="width">Content Width (px):</label>
