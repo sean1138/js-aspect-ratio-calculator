@@ -79,16 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const selectedNumRatio = parseFloat(selectedRatio.split(":")[0]) / parseFloat(selectedRatio.split(":")[1]);
         const actualNumRatio = ratioW / ratioH;
+        const megapixels = ((width * height) / 1000000).toFixed(2);
 
-        if (selectedRatio === "unlocked"){
+        if (selectedRatio === "unlocked") {
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 81)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (dimensions are divisible by 81)`;
         } else if (selectedRatio == `${ratioW}:${ratioH}`) {
             aspectRatioOutput.classList.add("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (dimensions are divisible by 82)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (dimensions are divisible by 82)`;
         } else {
             aspectRatioOutput.classList.remove("exact-match");
-            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 84)`;
+            aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR = ${megapixels} MP (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 84)`;
         }
         updateContentSize();
     }
