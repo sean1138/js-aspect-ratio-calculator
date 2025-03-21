@@ -217,20 +217,20 @@ document.addEventListener("DOMContentLoaded", function () {
 // How This Works:
 // 1. Loops through all <option> elements in aspect-ratio-select
 // 2. Hides all options first (style.display = "none")
-// 3. Shows only the ones that match the selected category from arSwitch
+// 3. Shows only the ones that match the selected category from arTypes
 // 4. If "all" is selected, it shows all options
 // 5. Automatically selects the first visible option
 document.addEventListener("DOMContentLoaded", function () {
-  const arSwitch = document.getElementById("arSwitch");
+  const arTypes = document.getElementById("arTypes");
   const arSelect = document.getElementById("aspect-ratio-select");
 
-  if (!arSwitch || !arSelect) {
+  if (!arTypes || !arSelect) {
     console.error("One or more elements are missing.");
     return;
   }
 
-  arSwitch.addEventListener("change", function () {
-    const value = arSwitch.value;
+  arTypes.addEventListener("change", function () {
+    const value = arTypes.value;
     const options = arSelect.querySelectorAll("option");
 
     options.forEach(option => {
