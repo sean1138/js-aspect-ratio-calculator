@@ -61,12 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
         let ratioW = width / divisor;
         let ratioH = height / divisor;
 
-        aspectRatioOutput.textContent = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
-
         if (`${ratioW}:${ratioH}` === selectedRatio) {
             aspectRatioOutput.classList.add("exact-match");
+            aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (dimensions are divisible by 8)`;
         } else {
             aspectRatioOutput.classList.remove("exact-match");
+            aspectRatioOutput.innerHTML = `Calculated: ${ratioW}:${ratioH} (approximate for ${aspectRatioSelect.value}, adjusted to ensure dimensions are divisible by 8)`;
         }
 
         updateContentSize();
