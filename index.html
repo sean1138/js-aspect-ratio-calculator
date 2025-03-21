@@ -132,19 +132,21 @@
 				<select id="aspect-ratio-select">
 					<option value="unlocked" class="digital analog social">Custom - content height & width ratio unlocked</option>
 					<option value="1:2.32">1:2.32 - 1st TV, Baird, 1930s</option>
-					<option value="5:4" class="digital" style="display:none">5:4 (1:1.25) - common large CRT computer monitors</option>
-					<option value="4:3" class="digital analog">4:3 (1:1.333) - 35 mm silent film era & NTSC SD video</option>
-					<option value="48:35"  class="analog">48:35 (1.37:1) - 16 mm and 35 mm standard</option>
+					<option value="5:4" class="digital" style="display:none">5:4 (1:1.25) - DV PAL, common large CRT computer monitors</option>
+					<option value="4:3" class="digital analog">4:3 (1:1.333) - 35 mm silent film era & NTSC SD video, 2K Full Aperture</option>
+					<option value="48:35" class="analog">48:35 (1.37:1) - 16 mm and 35 mm standard</option>
+					<option value="457:333" class="digital">457:333 (1.372:1) - 2k Academy</option>
 					<option value="11:8" class="analog">11:8 (1.375:1) - 35 mm "Academy Ratio" 1932 - 1953</option>
 					<option value="A4 (1.414:1)" class="analog print">A4 1:1.414 (Print)</option>
 					<option value="143:100" class="analog">143:100 (1.43:1) - IMAX 70 mm standard</option>
-					<option value="3:2" class="digital analog">3:2 (1.5:1) - 35 mm photo film frame, full frame digital camera sensor</option>
+					<option value="3:2" class="digital analog">3:2 (1.5:1) - DV NTSC, 35 mm photo film frame, full frame digital camera sensor</option>
 					<option value="8:5" class="digital">8:5 (1.6:1, 16:10) - Based Computer Monitors</option>
 					<option value="5:3" class="analog">5:3 (1.66:1, 15:9) - Early 35 mm widescreen, 16 mm, Nintendo 3DS top screen</option>
 					<option value="16:9" class="digital">16:9 (1.7:1) - Consumer Widescreen, HDTV</option>
 					<option value="7:4" class="analog">7:4 (1.75:1) - 35 mm Widescreen 1953 - 1955</option>
 					<option value="37:20" class="analog">37:20 (1.85:1) - 35 mm 1953, 3-perf, Ultra 16 mm</option>
 					<option value="15:8" class="digital">15:8 (1.875:1) - HDTV SG 1990s 1920x1024</option>
+					<option value="256:135" class="digital">256:135 (1.9:1) - DCI Full Frame</option>
 					<option value="2:1" class="digital analog">2:1 (18:9) - SuperScope, Red Digital, Mobile Phones</option>
 					<option value="11:5" class="analog">11:5 (2.208:1) - Todd-AO 70 mm 1950s</option>
 					<option value="47:20" class="analog">47:20 - (2.35:1) - 35 mm Anamorphic prior to 1970, CinemaScope, early Panavision</option>
@@ -157,6 +159,10 @@
 					<option value="32:9" class="digital">32:9 (3.5:1) - Super UltraWide</option>
 					<option value="18:5" class="analog">18:5 (3.6:1) - IMAX Ulra-WideScreen 3.6</option>
 					<option value="12:1" class="analog">12:1 - Disney Circle-Vision 360&deg; 1955</option>
+					<option value="4:5" class="social">4:5 - IG portrait, IGTV Cover</option>
+					<option value="1:1" class="social">1:1 - IG Square</option>
+					<option value="191:100" class="social">191:100 (1.91:1) - IG landscape</option>
+					<option value="9:16" class="social">9:16 (x) - IGTV Portrait</option>
 				</select>
 			</div>
 		</div>
@@ -195,9 +201,9 @@
 					Effect: <span id="content-ratio-words">-</span></p>
 				</div>
 			</div>
-
-
 		</div>
+		<h2>What's this?</h2>
+		<p>I made this tool primarily for my own amusement.  I prefer to size my images and videos such that both dimensions are divisible by 16 or 8 because i know most compression algorithms (like <a href="https://en.wikipedia.org/wiki/JPEG#JPEG_codec_example" target="_blank">JPEG</a>) work in blocks of 8&times;8 pixels.  The "FRAME" element above is supposed to represent your TV/Monitor but could just as easily be interpreted as a physical picture frame.  The "CONTENT" box inside of the "FRAME" is your image or video content.</p>
 	</main>
 	<footer>
 		<p>VSXD 2025.03.18</p>
