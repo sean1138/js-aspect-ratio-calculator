@@ -8,107 +8,146 @@
 	<!-- <link href="reset.css" rel="stylesheet" type="text/css" /> -->
 	<link href="pico.css" rel="stylesheet" type="text/css" />
 	<style>
-		html,body {
-		    height:100%;
-		}
-		body {
-			--content-ratio: 16 / 9;
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh;
-			padding: 1rem;
-			font-family: Arial, sans-serif;
-		}
+		html,
+	body {
+		height: 100%;
+	}
 
-		label,
-		input {
-			display: block;
-			margin-bottom: 10px;
-		}
+	body {
+		--content-ratio: 16 / 9;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		padding: 1rem;
+		font-family: Arial, sans-serif;
+	}
 
-		.aspect-ratio {
-			font-weight: bold;
-			color: orangered;
-		}
-		.exact-match, .exact-match *{
-			color: darkgreen;
-		}
+	label,
+	input {
+		display: block;
+		margin-bottom: 10px;
+	}
 
-		header,
-		main,
-		footer {
-			display: flex;
-			flex-direction: column;
-		}
+	.aspect-ratio {
+		font-weight: bold;
+		color: orangered;
+	}
 
-		.row,
-		[class^="input"] {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			gap: 2rem;
-		}
+	.exact-match,
+	.exact-match * {
+		color: darkgreen;
+	}
 
-		.row input {
-			width: auto;
-			min-width: 4ch;
-		}
-		.input-content input{
-			width: 12ch;
-		}
-		.input-frame input{
-			width: 12ch;
-		}
+	header,
+	main,
+	footer {
+		display: flex;
+		flex-direction: column;
+	}
 
-		.row [class^="input"] {
-			gap: 1em;
-		}
-		.column{
-			display: flex;
-			flex-direction: column;
-		}
-		input#ar-switch:checked ~ label#id1{
-		  display:none;
-		}
-		.frame {
-	    position: relative;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    margin: 0 auto;
-	    aspect-ratio: var(--content-ratio); /* Default aspect ratio */
-	    width: 100%;
-	    height: auto;
-	    max-width: 800px;  /* Adjust as needed */
-	    max-height: 456px;
-	    background: black;
-	    color: white;
-		}
-		.content {
-			display: grid;
-			place-content: center;
-			position: relative;
-	    object-fit: contain;
-	    aspect-ratio: var(--content-ratio); /* Set dynamically in JS */
-	    max-width: 800px;
-	    max-height: 456px;
-	    width: 100%;
-	    height: auto;
-	    background: blue;
-	    color: yellow;
-	    z-index: 1;
-		}
-		.frame:after{
-			content: "FRAME";
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-		footer {
-			flex-direction: row;
-			justify-content: center;
-			margin-top: auto;
-		}
+	.row,
+	[class^="input"] {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.row input {
+		width: auto;
+		min-width: 4ch;
+	}
+
+	.input-content input {
+		width: 12ch;
+	}
+
+	.input-frame input {
+		width: 12ch;
+	}
+
+	.row [class^="input"] {
+		gap: 1em;
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+	}
+
+	input#ar-switch:checked~label#id1 {
+		display: none;
+	}
+
+	.frame {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		aspect-ratio: var(--content-ratio);
+		/* Default aspect ratio */
+		width: 100%;
+		height: auto;
+		max-width: 800px;
+		/* Adjust as needed */
+		max-height: 456px;
+		background: black;
+		color: white;
+	}
+
+	.content {
+		position: relative;
+		display: grid;
+		place-content: center;
+		justify-content: stretch;
+		align-content: normal;
+		object-fit: contain;
+		aspect-ratio: var(--content-ratio);
+		/* Set dynamically in JS */
+		max-width: 800px;
+		max-height: 456px;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		background: blue;
+		color: yellow;
+		z-index: 1;
+	}
+
+	.frame:after {
+		content: "FRAME";
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#dropArea {
+		/*      border: 2px dashed #ccc;*/
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		cursor: pointer;
+
+	}
+
+	#drop-area.highlight {
+		border-color: #007bff;
+	}
+
+	img {
+		display: none;
+		max-width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	footer {
+		flex-direction: row;
+		justify-content: center;
+		margin-top: auto;
+	}
 	</style>
 </head>
 
@@ -191,23 +230,29 @@
 				<div class="frame-wrap" style="width:800px;height:456px;outline:1px solid #F0F;">
 					<div class="frame">
 						<div class="content">
-							CONTENT
+
+							<div id="dropArea">
+								<span id="contentText">CONTENT</span>
+								<input type="file" id="fileInput" accept="image/" hidden>
+								<img id="previewImg" alt="preview">
+							</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="results">
-					<p>Frame Ratio: <span id="frame-ratio-output">-</span> <br>
-					Content Ratio: <span id="content-ratio-output">-</span> <br>
-					Effect: <span id="content-ratio-words">-</span></p>
+					<div class="results">
+						<p>Frame Ratio: <span id="frame-ratio-output">-</span> <br>
+							Content Ratio: <span id="content-ratio-output">-</span> <br>
+							Effect: <span id="content-ratio-words">-</span></p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<h2>What's this?</h2>
-		<p>I made this tool primarily for my own amusement.  I prefer to size my images and videos such that both dimensions are divisible by 16 or 8 because i know most compression algorithms (like <a href="https://en.wikipedia.org/wiki/JPEG#JPEG_codec_example" target="_blank">JPEG</a>) work in blocks of 8&times;8 pixels.  The "FRAME" element above is supposed to represent your TV/Monitor but could just as easily be interpreted as a physical picture frame.  The "CONTENT" box inside of the "FRAME" is your image or video content.</p>
+			<h2>What's this?</h2>
+			<p>I made this tool primarily for my own amusement. I prefer to size my images and videos such that both dimensions are divisible by 16 or 8 because i know most compression algorithms (like <a href="https://en.wikipedia.org/wiki/JPEG#JPEG_codec_example" target="_blank">JPEG</a>) work in blocks of 8&times;8 pixels. The "FRAME" element above is supposed to represent your TV/Monitor but could just as easily be interpreted as a physical picture frame. The "CONTENT" box inside of the "FRAME" is your image or video content.</p>
+
+
 	</main>
 	<footer>
 		<p>VSXD 2025.03.18</p>
 	</footer> <script src="script.js"></script>
 </body>
-
 </html>

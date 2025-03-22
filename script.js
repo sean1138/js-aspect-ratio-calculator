@@ -256,4 +256,46 @@ document.addEventListener("DOMContentLoaded", function () {
       arSelect.value = firstVisible.value;
     }
   });
+
+// drag/drop image
+  const dropArea = document.getElementById("dropArea");
+  const fileInput = document.getElementById("fileInput");
+  const previewImg = document.getElementById("previewImg");
+  const contentText = document.getElementById("contentText");
+
+  // Handle file selection
+  function handleFiles(files) {
+      const file = files[0];
+      if (file && file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+              previewImg.src = e.target.result;
+              previewImg.style.display = "block";
+              contentText.style.display = "none";
+          };
+          reader.readAsDataURL(file);
+      }
+  }
+
+  // Drag & drop events
+  dropArea.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropArea.classList.add("highlight");
+      contentText.style.display = "none";
+  });
+
+  dropArea.addEventListener("dragleave", () => {
+      dropArea.classList.remove("highlight");
+      contentText.style.display = "block";
+  });
+
+  dropArea.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropArea.classList.remove("highlight");
+      handleFiles(e.dataTransfer.files);
+  });
+
+  // Click to open file dialog
+  dropArea.addEventListener("click", () => fileInput.click());
+  fileInput.addEventListener("change", (e) => handleFiles(e.target.files));
 });
