@@ -834,7 +834,7 @@ h6 {
 }
 
 p {
-  margin-bottom: var(--pico-typography-spacing-vertical);
+  margin:var(--pico-typography-spacing-vertical) 0 var(--pico-typography-spacing-vertical) 0;
 }
 
 hgroup {

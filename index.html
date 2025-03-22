@@ -86,11 +86,9 @@
 		align-items: center;
 		margin: 0 auto;
 		aspect-ratio: var(--content-ratio);
-		/* Default aspect ratio */
 		width: 100%;
 		height: auto;
 		max-width: 800px;
-		/* Adjust as needed */
 		max-height: 456px;
 		background: black;
 		color: white;
@@ -121,9 +119,13 @@
 		top: 0;
 		left: 0;
 	}
+	.results{
+		display: flex;
+		align-items: anchor-center;
+	}
 
 	#dropArea {
-		/*      border: 2px dashed #ccc;*/
+		/*border: 2px dashed #ccc;*/
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -148,6 +150,8 @@
 		justify-content: center;
 		margin-top: auto;
 	}
+	.m0{margin: 0;}
+	.mt0{margin-top:0;}
 	</style>
 </head>
 
@@ -223,9 +227,9 @@
 				<input type="number" id="frame-height" min="1" step="0.25" value="9">
 			</div>
 		</div>
-		<p>Content Aspect Ratio: <span id="aspect-ratio" class="aspect-ratio">Enter values to calculate</span></p>
+		<p class="m0">Content Aspect Ratio: <span id="aspect-ratio" class="aspect-ratio">Enter values to calculate</span></p>
 		<div class="column">
-			<p>Simulated visual representation:</p>
+			<p class="m0">Simulated visual representation:</p>
 			<div class="row" style="align-items: unset;">
 				<div class="frame-wrap" style="width:800px;height:456px;outline:1px solid #F0F;">
 					<div class="frame">
@@ -246,10 +250,10 @@
 					</div>
 				</div>
 			</div>
+			<p id="aspectRatioText"></p>
 			<h2>What's this?</h2>
 			<p>I made this tool primarily for my own amusement. I prefer to size my images and videos such that both dimensions are divisible by 16 or 8 because i know most compression algorithms (like <a href="https://en.wikipedia.org/wiki/JPEG#JPEG_codec_example" target="_blank">JPEG</a>) work in blocks of 8&times;8 pixels. The "FRAME" element above is supposed to represent your TV/Monitor but could just as easily be interpreted as a physical picture frame. The "CONTENT" box inside of the "FRAME" is your image or video content.</p>
-
-
+			<p>Want to get the aspect ratio of an image?  drag and drop it into the blue content box :D</p>
 	</main>
 	<footer>
 		<p>VSXD 2025.03.18</p>

@@ -289,10 +289,42 @@ document.addEventListener("DOMContentLoaded", function () {
       contentText.style.display = "block";
   });
 
+  // Function to reduce aspect ratio to the smallest form
+  function simplifyRatio(width, height) {
+      function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+      const divisor = gcd(width, height);
+      return `${width / divisor}:${height / divisor}`;
+  }
+
   dropArea.addEventListener("drop", (e) => {
       e.preventDefault();
       dropArea.classList.remove("highlight");
       handleFiles(e.dataTransfer.files);
+      dropArea.classList.remove("drag-over");
+
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith("image/")) {
+          const reader = new FileReader();
+
+          reader.onload = (event) => {
+              previewImg.src = event.target.result;
+              previewImg.style.display = "block"; // Show the image
+
+              // Create an offscreen image to get dimensions
+              const img = new Image();
+              img.src = event.target.result;
+              img.onload = () => {
+                const width = img.width;
+                const height = img.height;
+                const aspectRatio = (img.width / img.height).toFixed(2);
+                const simplifiedRatio = simplifyRatio(width, height);
+                document.getElementById("aspectRatioText").innerHTML =
+                    `Aspect ratio of dropped image = ${simplifiedRatio}, ${aspectRatio}:1 (${width} px W &times; ${height} px H)`;
+              };
+          };
+
+          reader.readAsDataURL(file);
+      }
   });
 
   // Click to open file dialog
