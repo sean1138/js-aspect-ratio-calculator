@@ -164,10 +164,14 @@ document.addEventListener("DOMContentLoaded", function () {
             frame.style.height = "auto";
             // debug
             document.getElementById("content-ratio-words").textContent = "pillarboxed";
-        } else {
+        } else if (contentRatio === frameRatio) {
             frame.style.width = "auto";
             frame.style.height = "auto";
             document.getElementById("content-ratio-words").textContent = "both ratios match";
+        } else {
+            frame.style.width = "auto";
+            frame.style.height = "auto";
+            document.getElementById("content-ratio-words").textContent = "unexpected condition";
         }
     }
 
@@ -206,6 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
             content.style.width = "auto";
             content.style.height = "100%";
         }
+
     }
 
     widthInput.addEventListener("input", updateAspectRatio);
