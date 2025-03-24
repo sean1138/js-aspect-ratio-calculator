@@ -323,8 +323,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const height = img.height;
                 const aspectRatio = (img.width / img.height).toFixed(2);
                 const simplifiedRatio = simplifyRatio(width, height);
+                document.getElementById("aspectRatioText").style.display = "block";
                 document.getElementById("aspectRatioText").innerHTML =
-                    `Aspect ratio of dropped image = ${simplifiedRatio}, ${aspectRatio}:1 (${width} px W &times; ${height} px H)`;
+                    `Aspect ratio of dropped image = ${simplifiedRatio}, ${aspectRatio}:1 <br>Dimensions = ${width} px W &times; ${height} px H`;
               };
           };
 

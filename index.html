@@ -121,7 +121,9 @@
 	}
 	.results{
 		display: flex;
-		align-items: anchor-center;
+		flex-direction: column;
+		/*align-items: anchor-center;*/
+		justify-content: center;
 	}
 
 	#dropArea {
@@ -136,6 +138,9 @@
 
 	#drop-area.highlight {
 		border-color: #007bff;
+	}
+	#aspectRatioText{
+		display:none;
 	}
 
 	img {
@@ -202,10 +207,10 @@
 					<option value="32:9" class="digital">32:9 (3.5:1) - Super UltraWide</option>
 					<option value="18:5" class="analog">18:5 (3.6:1) - IMAX Ulra-WideScreen 3.6</option>
 					<option value="12:1" class="analog">12:1 - Disney Circle-Vision 360&deg; 1955</option>
-					<option value="4:5" class="social">4:5 - IG portrait, IGTV Cover</option>
+					<option value="4:5" class="social">4:5 (1:1.25) - IG portrait, IGTV Cover</option>
 					<option value="1:1" class="social">1:1 - IG Square</option>
 					<option value="191:100" class="social">191:100 (1.91:1) - IG landscape</option>
-					<option value="9:16" class="social">9:16 (x) - IGTV Portrait</option>
+					<option value="9:16" class="social">9:16 (1:1.7) - IGTV Portrait</option>
 				</select>
 			</div>
 		</div>
@@ -231,10 +236,9 @@
 		<div class="column">
 			<p class="m0">Simulated visual representation:</p>
 			<div class="row" style="align-items: unset;">
-				<div class="frame-wrap" style="width:800px;height:456px;outline:1px solid #F0F;">
+				<div class="frame-wrap" style="width:800px;height:456px;outline:1px solid #999;">
 					<div class="frame">
 						<div class="content">
-
 							<div id="dropArea">
 								<span id="contentText">CONTENT</span>
 								<input type="file" id="fileInput" accept="image/" hidden>
@@ -247,10 +251,10 @@
 						<p>Frame Ratio: <span id="frame-ratio-output">-</span> <br>
 							Content Ratio: <span id="content-ratio-output">-</span> <br>
 							Effect: <span id="content-ratio-words">-</span></p>
+						<p id="aspectRatioText"></p>
 					</div>
 				</div>
 			</div>
-			<p id="aspectRatioText"></p>
 			<h2>What's this?</h2>
 			<p>I made this tool primarily for my own amusement. I prefer to size my images and videos such that both dimensions are divisible by 16 or 8 because i know most compression algorithms (like <a href="https://en.wikipedia.org/wiki/JPEG#JPEG_codec_example" target="_blank">JPEG</a>) work in blocks of 8&times;8 pixels. The "FRAME" element above is supposed to represent your TV/Monitor but could just as easily be interpreted as a physical picture frame. The "CONTENT" box inside of the "FRAME" is your image or video content.</p>
 			<p>Want to get the aspect ratio of an image?  drag and drop it into the blue content box :D</p>
