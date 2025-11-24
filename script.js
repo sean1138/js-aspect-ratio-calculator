@@ -43,7 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "1:1": [1, 1], // IG square
         "191:100": [191, 100], // IG landscape
         "9:16": [9, 16], // IGTV portrait
-        "12:1": [12, 1]
+        "12:1": [12, 1],
+        "45:6": [4.5, 6], // 1.35
+        "7:6": [7, 6], // 1.1666
+        "8:6": [8, 6], // 1.3333
+        "9:6": [9, 6], // 1.5
+        "12:6": [12, 6], // 2
+        "17:6": [17, 6], // 2.8333
+        "24:6": [24, 6] // 4
         // "21:9": [21, 9]
     };
 
@@ -106,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!aspectRatios[selectedRatio]) return;
 
         let [ratioW, ratioH] = aspectRatios[selectedRatio];
-        let baseWidth = 800;
+        let baseWidth = 1024;
         let baseHeight = Math.round((baseWidth / ratioW) * ratioH);
 
         if (baseWidth % 8 !== 0) baseWidth += 8 - (baseWidth % 8);
