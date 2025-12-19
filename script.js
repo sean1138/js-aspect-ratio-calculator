@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			aspectRatioOutput.classList.add("exact-match");
 			// aspectRatioOutput.innerHTML = `${width}&times${height} = ${ratioW}:${ratioH} AR (dimensions are divisible by 8) = ${megapixels} MP`;
 			aspectRatioOutput.innerHTML =
-			  `${width}&times;${width} = ${ratioW}:${ratioH} AR (dimensions are divisible by ${step}) = ${megapixels} MP`;
+			  `${width}&times;${height} = ${ratioW}:${ratioH} AR (dimensions are divisible by ${step}) = ${megapixels} MP`;
 
 		} else {
 			aspectRatioOutput.classList.remove("exact-match");
