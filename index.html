@@ -284,7 +284,7 @@
 			<hr>
 			<table class="table table-bordered striped">
 				<caption>
-					Cinematic Aspect Ratios
+					"Cinematic" Aspect Ratios
 				</caption>
 				<thead>
 					<tr>
@@ -363,6 +363,88 @@
 					</tr>
 					<!-- <tr>
 						<th scope="row">XXX</th>
+						<td>XXX</td>
+						<td>XXX</td>
+						<td>XXX</td>
+					</tr> -->
+				</tbody>
+			</table>
+			<h2>lookup table for 1 - 2 megapixels</h2>
+			<table class="table table-bordered striped">
+				<caption>
+					most commonly used aspect ratios divisible by 16
+				</caption>
+				<thead>
+					<tr>
+						<th scope="col">x:x</th>
+						<th scope="col">1 mp</th>
+						<th scope="col">1.25 mp</th>
+						<th scope="col">1.5 mp</th>
+						<th scope="col">1.75 mp</th>
+						<th scope="col">2 mp</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1:1 (1)</th>
+						<td>1024x1024 = 1.04 mp</td>
+						<td>1120x1120 = 1.25 mp</td>
+						<td>1232x1232 = 1.52 mp</td>
+						<td>1328x1328 = 1.76 mp</td>
+						<td>1408x1408 = 1.98 mp</td>
+					</tr>
+					<tr>
+						<th scope="row">5:4 (1.25)</th>
+						<td>1120x896 = 1.0 mp</td>
+						<td>1280x1024 = 1.31 mp</td>
+						<td>1360x1088 = 1.48 mp</td>
+						<td>1520x1216 = 1.85 mp</td>
+						<td>1600x1280 = 2.05 mp</td>
+					</tr>
+					<tr>
+						<th scope="row">4:3 (1.333)</th>
+						<td>1152x864 = 1.0 mp</td>
+						<td>1280x960 = 1.23 mp</td>
+						<td>1408x1056 = 1.49 mp</td>
+						<td>1536x1152 = 1.77 mp</td>
+						<td>1600x1200 = 1.92 mp</td>
+					</tr>
+					<tr>
+						<th scope="row">3:2 | 6:9 (1.5)</th>
+						<td>1200x800 = 0.96 mp</td>
+						<td>1392x928 = 1.29 mp</td>
+						<td>1536x1024 = 1.57 mp</td>
+						<td>1632x1088 = 1.78 mp</td>
+						<td>1728x1152 = 1.99 mp</td>
+					</tr>
+					<tr>
+						<th scope="row">8:5 | 16:10 (1.6)</th>
+						<td>1280x800 = 1.02 mp</td>
+						<td>1408x880 = 1.24 mp</td>
+						<td>1536x960 = 1.47 mp</td>
+						<td>1664x1040 = 1.73 mp</td>
+						<td>1792x1120 = 2.01 mp</td>
+					</tr>
+					<tr>
+						<th scope="row">6:7 (1.6667)</th>
+						<td>1120x960 = 1.08 mp</td>
+						<td>1232x1056 = 1.30 mp</td>
+						<td>1344x1152 = 1.55 mp</td>
+						<td>1456x1248 = 1.82 mp</td>
+						<td>1568x1344 = 2.11 mp</td>
+					</tr>
+					<tr>
+						<th scope="row">16:9 (1.7)</th>
+						<td>1280x720 = 0.92 mp</td>
+						<td>1536x864 = 1.33 mp</td>
+						<td>N/A</td>
+						<td>11792x1008 = 1.81 mp</td>
+						<td>2048x1152 = 2.36 mp</td>
+					</tr>
+					<!-- <tr>
+						<th scope="row">XXX</th>
+						<td>XXX</td>
+						<td>XXX</td>
 						<td>XXX</td>
 						<td>XXX</td>
 						<td>XXX</td>
@@ -524,88 +606,6 @@
 						<td>XXX</td>
 						<td>XXX</td>
 					</tr>
-				</tbody>
-			</table>
-			<h2>lookup table for 1 - 2 megapixels</h2>
-			<table class="table table-bordered striped">
-				<caption>
-					most commonly used aspect ratios divisible by 16
-				</caption>
-				<thead>
-					<tr>
-						<th scope="col">x:x</th>
-						<th scope="col">1 mp</th>
-						<th scope="col">1.25 mp</th>
-						<th scope="col">1.5 mp</th>
-						<th scope="col">1.75 mp</th>
-						<th scope="col">2 mp</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1:1 (1)</th>
-						<td>1024x1024 = 1.04 mp</td>
-						<td>1120x1120 = 1.25 mp</td>
-						<td>1232x1232 = 1.52 mp</td>
-						<td>1328x1328 = 1.76 mp</td>
-						<td>1408x1408 = 1.98 mp</td>
-					</tr>
-					<tr>
-						<th scope="row">5:4 (1.25)</th>
-						<td>1120x896 = 1.0 mp</td>
-						<td>1280x1024 = 1.31 mp</td>
-						<td>1360x1088 = 1.48 mp</td>
-						<td>1520x1216 = 1.85 mp</td>
-						<td>1600x1280 = 2.05 mp</td>
-					</tr>
-					<tr>
-						<th scope="row">4:3 (1.333)</th>
-						<td>1152x864 = 1.0 mp</td>
-						<td>1280x960 = 1.23 mp</td>
-						<td>1408x1056 = 1.49 mp</td>
-						<td>1536x1152 = 1.77 mp</td>
-						<td>1600x1200 = 1.92 mp</td>
-					</tr>
-					<tr>
-						<th scope="row">3:2 | 6:9 (1.5)</th>
-						<td>1200x800 = 0.96 mp</td>
-						<td>1392x928 = 1.29 mp</td>
-						<td>1536x1024 = 1.57 mp</td>
-						<td>1632x1088 = 1.78 mp</td>
-						<td>1728x1152 = 1.99 mp</td>
-					</tr>
-					<tr>
-						<th scope="row">8:5 | 16:10 (1.6)</th>
-						<td>1280x800 = 1.02 mp</td>
-						<td>1408x880 = 1.24 mp</td>
-						<td>1536x960 = 1.47 mp</td>
-						<td>1664x1040 = 1.73 mp</td>
-						<td>1792x1120 = 2.01 mp</td>
-					</tr>
-					<tr>
-						<th scope="row">6:7 (1.6667)</th>
-						<td>1120x960 = 1.08 mp</td>
-						<td>1232x1056 = 1.30 mp</td>
-						<td>1344x1152 = 1.55 mp</td>
-						<td>1456x1248 = 1.82 mp</td>
-						<td>1568x1344 = 2.11 mp</td>
-					</tr>
-					<tr>
-						<th scope="row">16:9 (1.7)</th>
-						<td>1280x720 = 0.92 mp</td>
-						<td>1536x864 = 1.33 mp</td>
-						<td>N/A</td>
-						<td>11792x1008 = 1.81 mp</td>
-						<td>2048x1152 = 2.36 mp</td>
-					</tr>
-					<!-- <tr>
-						<th scope="row">XXX</th>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-						<td>XXX</td>
-					</tr> -->
 				</tbody>
 			</table>
 			<p>The idea of matching any particular film format/size to a megapixel count sounds simple on the surface but is pretty complex in reality.  In my case, with my photo lab film and digital media background, I decided to go for a 24 megapixel camera that could take legacy known good lenses once they were just within my budget (around 2014-2015) because the sample images I was seeing from dpreview.com were finally matching or exceeding the detail I knew was possible from high quality (but relatively affordable) scans of low ISO 35 mm photo and slide film.  If you want some more scientific and highly technical details on this subject <a href="https://www.clarkvision.com/articles/film.vs.digital.summary1/index.html" target="_blank">ClarkVision.com</a> has them.  After getting a 24 MP Sony camera I was extremely happy with the amount of detail I was able to get by "scanning" 35 mm and larger format still photo films with my low-budget setup.</p>
